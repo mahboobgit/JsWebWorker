@@ -19,9 +19,18 @@ For threading model in Javascript, look for following options
 4. Timer  
 
 
-Deferred: It will allow us to create a long running operation and allow other developers to register event handlers
-
-DEFERRED object is used to manage long running operations and raise events on complition, failure, etc.
+Deferred: It will allow us to create a long running operation and allow other developers to register event handlers  
 
 
+DEFERRED object is used to manage long running operations and raise events on complition, failure, etc. It's coming from JQuery.  
+
+
+1. It can be user for if we want to set up some progress bar.  
+
+
+PROMISES: Its a promise for returning an object in future.
+
+done  : Done  
+reject   : Failure  
+progress : InProgress  
 
