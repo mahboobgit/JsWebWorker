@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Web Worker Demo</title>
+        <meta charset="utf-8"/>  
+    </head>
+    <body>
+        <div>
+            <label for="message">Enter your Name:</label>
+            <input type="text" id="txtName" />
+            <button type="button" id="btnSend" onclick="btnClicked();">Process Async Work</button>
+        </div>
+        <br/>
+        <div id = "message" ></div>
+        <script>
+
+            var worker = null;
+            if(window.Worker != null){
+
+                //initilise Worker
+                worker = new Worker('./longRunningFn.js');
+
+                //receive response from async worker
+                worker.onmessage = function(e){
+                    var message = e.data;                    
+                    document.getElementById('message').innerText = message;
+                };
+            }
+            
+            var btnClicked = function(){
+
+                if(worker != null){
+
+                    var inputName = document.getElementById('txtName').value,
+                        arrname = inputName.split(" "),
+                        firstname = "firstname",
+                        lastname = "lastname";
+
+                    if(arrname[0] !== ""){
+                        firstname = arrname[0];
+                        lastname = arrname[1] != undefined ? arrname[1] : "na";
+
+
+                         //Create New Object
+                        var obj = {name: {
+                            firstName : firstname,
+                            lastName : lastname
+                        }};
+
+                        //send message to worker.
+                        worker.postMessage(obj);
+                    }
+                    document.getElementById('message').innerText = 'type your name !!';      
+                   
+                }
+                document.getElementById('message').innerText = 'type your name !!';
+                
+            }
+
+        </script>
+    </body>
+</html> 
