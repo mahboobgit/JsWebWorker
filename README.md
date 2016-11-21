@@ -19,5 +19,9 @@ For threading model in Javascript, look for following options
 4. Timer  
 
 
+Deferred: It will allow us to create a long running operation and allow other developers to register event handlers
+
+DEFERRED object is used to manage long running operations and raise events on complition, failure, etc.
+
 
 

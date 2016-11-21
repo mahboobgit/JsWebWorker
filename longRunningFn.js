@@ -6,3 +6,10 @@ self.onmessage = function(e){
     self.postMessage(name);
     
 };
+
+
+var sleepForMiliSeconds = function(miliseconds){
+    var startTime = new Date().getTime();
+    var stopTime = startTime + miliseconds;
+    while(stopTime >= new Date().getTime()){}
+};
